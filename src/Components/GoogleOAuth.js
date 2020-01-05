@@ -41,7 +41,7 @@ export default class GoogleAuth extends React.Component {
 			SignInStatus: RenderMessage
 		});
 	};
-	t651;
+
 	render() {
 		return (
 			<div>
