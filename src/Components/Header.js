@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import GoogleAuth from "./GoogleOAuth";
 
 export default class Header extends Component {
 	state = { activeItem: "home" };
@@ -17,6 +18,7 @@ export default class Header extends Component {
 							<Link to="/streams/new" className="active item">
 								ALL Streams
 							</Link>
+							<GoogleAuth></GoogleAuth>
 						</div>
 					</div>
 					<Link to="/" className="item">
