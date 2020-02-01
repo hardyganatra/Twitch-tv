@@ -6,9 +6,9 @@ import {
 	SignOutClickedAction
 } from "../Middleware/Action";
 class GoogleAuth extends React.Component {
-	// state = {
-	// 	SignInStatus: ""
-	// };
+	state = {
+		SignInStatus: null
+	};
 	componentDidMount() {
 		window.gapi.load("client:auth2", () => {
 			window.gapi.client
@@ -18,42 +18,47 @@ class GoogleAuth extends React.Component {
 					scope: "email"
 				})
 				.then(() => {
-					// const Auth2 = window.gapi.auth2.getAuthInstance();
-					// const signInstatus = Auth2.isSignedIn.get();
-					// var RenderMessage = signInstatus
-					// 	? "User is Signed In"
-					// 	: "User Signed Out";
-					// this.setState({
-					// 	SignInStatus: RenderMessage
-					// });
-					// console.log(RenderMessage);
+					this.auth2 = window.gapi.auth2.getAuthInstance();
+					this.setState({
+						SignInStatus: this.auth2.isSignedIn.get()
+					});
 				});
 		});
 	}
-	SignInClicked = () => {
-		const Auth2 = window.gapi.auth2.getAuthInstance();
-		Auth2.signIn();
-		var RenderMessage = "User is Signed In";
-		// this.setState({
-		// 	SignInStatus: RenderMessage
-		// });
-		this.props.SignInClicked(RenderMessage);
+	// SignInClicked = () => {
+	// 	const Auth2 = window.gapi.auth2.getAuthInstance();
+	// 	Auth2.signIn();
+	// 	var RenderMessage = "User is Signed In";
+	// 	// this.setState({
+	// 	// 	SignInStatus: RenderMessage
+	// 	// });
+	// 	this.props.SignInClicked(RenderMessage);
+	// };
+	// SignOutClicked = () => {
+	// 	const Auth2 = window.gapi.auth2.getAuthInstance();
+	// 	Auth2.signOut();
+	// 	var RenderMessage = "User Signed Out";
+	// 	// this.setState({
+	// 	// 	SignInStatus: RenderMessage
+	// 	// });
+	// 	this.props.SignOutClicked(RenderMessage);
+	// };
+	renderButton = () => {
+		if (this.state.SignInStatus === null) {
+			return <div>Dont Know</div>;
+		} else if (this.state.SignInStatus === true) {
+			return <div>IS SIGNED IN</div>;
+		} else if (this.state.SignInStatus === false) {
+			return <div>NOT SIGNED IN</div>;
+		}
 	};
-	SignOutClicked = () => {
-		const Auth2 = window.gapi.auth2.getAuthInstance();
-		Auth2.signOut();
-		var RenderMessage = "User Signed Out";
-		// this.setState({
-		// 	SignInStatus: RenderMessage
-		// });
-		this.props.SignOutClicked(RenderMessage);
-	};
-
 	render() {
 		console.log("-------------Render Called-----------------");
+		console.log("State", this.state);
 		return (
 			<div>
-				{/* <span>{this.state.SignInStatus}</span> */}
+				{this.renderButton()}
+				{/* <span>{this.state.SignInStatus}</span>
 				{this.props.SignInStatus !== "User is Signed In" ? (
 					<Button
 						className="ui blue google button"
@@ -70,7 +75,7 @@ class GoogleAuth extends React.Component {
 				>
 					<i className="google icon"></i>
 					Sign Out
-				</Button>
+				</Button> */}
 			</div>
 		);
 	}
