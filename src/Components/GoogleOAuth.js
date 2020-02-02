@@ -19,37 +19,47 @@ class GoogleAuth extends React.Component {
 				})
 				.then(() => {
 					this.auth2 = window.gapi.auth2.getAuthInstance();
-					this.setState({
-						SignInStatus: this.auth2.isSignedIn.get()
-					});
+					this.onAuthChange();
+					this.auth2.isSignedIn.listen(this.onAuthChange);
 				});
 		});
 	}
-	// SignInClicked = () => {
-	// 	const Auth2 = window.gapi.auth2.getAuthInstance();
-	// 	Auth2.signIn();
-	// 	var RenderMessage = "User is Signed In";
-	// 	// this.setState({
-	// 	// 	SignInStatus: RenderMessage
-	// 	// });
-	// 	this.props.SignInClicked(RenderMessage);
-	// };
-	// SignOutClicked = () => {
-	// 	const Auth2 = window.gapi.auth2.getAuthInstance();
-	// 	Auth2.signOut();
-	// 	var RenderMessage = "User Signed Out";
-	// 	// this.setState({
-	// 	// 	SignInStatus: RenderMessage
-	// 	// });
-	// 	this.props.SignOutClicked(RenderMessage);
-	// };
+
+	onAuthChange = () => {
+		this.setState({
+			SignInStatus: this.auth2.isSignedIn.get()
+		});
+	};
+	SignInClicked = () => {
+		this.auth2.signIn();
+	};
+	SignOutClicked = () => {
+		this.auth2.signOut();
+	};
 	renderButton = () => {
 		if (this.state.SignInStatus === null) {
-			return <div>Dont Know</div>;
-		} else if (this.state.SignInStatus === true) {
-			return <div>IS SIGNED IN</div>;
-		} else if (this.state.SignInStatus === false) {
-			return <div>NOT SIGNED IN</div>;
+			return null;
+		} else if (this.state.SignInStatus) {
+			//if signed in show sign out button and handle signout event
+			return (
+				<Button
+					onClick={this.SignOutClicked}
+					className="ui red google button"
+				>
+					<i className="google icon"></i>
+					Sign Out
+				</Button>
+			);
+		} else if (!this.state.SignInStatus) {
+			//if signed out show sign in button and handle signin event
+			return (
+				<Button
+					onClick={this.SignInClicked}
+					className="ui blue google button"
+				>
+					<i className="google icon"></i>Sign In
+				</Button>
+			);
 		}
 	};
 	render() {
