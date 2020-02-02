@@ -1,13 +1,10 @@
 import React from "react";
 import { Button } from "semantic-ui-react";
 import { connect } from "react-redux";
-import {
-	SignInClickedAction,
-	SignOutClickedAction
-} from "../Middleware/Action";
+import { SignInAction, SignOutAction } from "../Middleware/Action";
 class GoogleAuth extends React.Component {
 	// state = {
-	// 	SignInStatus: ""
+	// 	SignInStatus: null
 	// };
 	componentDidMount() {
 		window.gapi.load("client:auth2", () => {
@@ -18,75 +15,89 @@ class GoogleAuth extends React.Component {
 					scope: "email"
 				})
 				.then(() => {
-					// const Auth2 = window.gapi.auth2.getAuthInstance();
-					// const signInstatus = Auth2.isSignedIn.get();
-					// var RenderMessage = signInstatus
-					// 	? "User is Signed In"
-					// 	: "User Signed Out";
-					// this.setState({
-					// 	SignInStatus: RenderMessage
-					// });
-					// console.log(RenderMessage);
+					this.auth2 = window.gapi.auth2.getAuthInstance();
+					this.onAuthChange();
+					this.auth2.isSignedIn.listen(this.onAuthChange);
 				});
 		});
 	}
-	SignInClicked = () => {
-		const Auth2 = window.gapi.auth2.getAuthInstance();
-		Auth2.signIn();
-		var RenderMessage = "User is Signed In";
+
+	onAuthChange = () => {
+		const status = this.auth2.isSignedIn.get();
+		if (status) {
+			this.props.UserSigned_In(this.auth2.currentUser.get().getId());
+		} else {
+			this.props.UserSigned_Out();
+		}
 		// this.setState({
-		// 	SignInStatus: RenderMessage
+		// 	SignInStatus: this.auth2.isSignedIn.get()
 		// });
-		this.props.SignInClicked(RenderMessage);
+		// console.log(a, "Listenned");
+	};
+	SignInClicked = () => {
+		this.auth2.signIn();
 	};
 	SignOutClicked = () => {
-		const Auth2 = window.gapi.auth2.getAuthInstance();
-		Auth2.signOut();
-		var RenderMessage = "User Signed Out";
-		// this.setState({
-		// 	SignInStatus: RenderMessage
-		// });
-		this.props.SignOutClicked(RenderMessage);
+		this.auth2.signOut();
 	};
-
-	render() {
-		console.log("-------------Render Called-----------------");
-		return (
-			<div>
-				{/* <span>{this.state.SignInStatus}</span> */}
-				{this.props.SignInStatus !== "User is Signed In" ? (
+	renderButton = () => {
+		if (this.props.SignInStatus === null) {
+			return (
+				<div>
 					<Button
-						className="ui blue google button"
 						onClick={this.SignInClicked}
+						className="ui blue google button"
+					>
+						<i className="google icon"></i>Sign In
+					</Button>
+					<Button
+						onClick={this.SignOutClicked}
+						className="ui red google button"
 					>
 						<i className="google icon"></i>
-						Sign IN
+						Sign Out
 					</Button>
-				) : null}
-
+				</div>
+			);
+		} else if (this.props.SignInStatus) {
+			//if signed in show sign out button and handle signout event
+			return (
 				<Button
-					className="ui red google button"
 					onClick={this.SignOutClicked}
+					className="ui red google button"
 				>
 					<i className="google icon"></i>
 					Sign Out
 				</Button>
-			</div>
-		);
+			);
+		} else if (!this.props.SignInStatus) {
+			//if signed out show sign in button and handle signin event
+			return (
+				<Button
+					onClick={this.SignInClicked}
+					className="ui blue google button"
+				>
+					<i className="google icon"></i>Sign In
+				</Button>
+			);
+		}
+	};
+	render() {
+		console.log("-------------Render Called-----------------");
+		return <div>{this.renderButton()}</div>;
 	}
 }
 const mapStateToProps = state => {
 	console.log("State =>", state.AuthReducer);
 	return {
-		SignInStatus: state.AuthReducer.SignInStatus,
-		SignOutStatus: state.AuthReducer.SignOutStatus
+		SignInStatus: state.AuthReducer.SignInStatus
 	};
 };
 
 const mapDispatchToProps = dispatch => {
 	return {
-		SignInClicked: msg => dispatch(SignInClickedAction(msg)),
-		SignOutClicked: msg => dispatch(SignOutClickedAction(msg))
+		UserSigned_In: ID => dispatch(SignInAction(ID)),
+		UserSigned_Out: msg => dispatch(SignOutAction())
 	};
 };
 

@@ -21,9 +21,9 @@ export default class Header extends Component {
 							<GoogleAuth></GoogleAuth>
 						</div>
 					</div>
-					<Link to="/" className="item">
+					{/* <Link to="/" className="item">
 						Logout
-					</Link>
+					</Link> */}
 				</div>
 			</div>
 		);

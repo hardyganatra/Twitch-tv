@@ -1,12 +1,18 @@
-export const SignInClickedAction = msg => {
-	console.log("SignInClickedAction", msg);
+import { SIGN_IN, SIGN_OUT } from "../Middleware/ActionTypes";
+export const SignInAction = ID => {
+	console.log("SignInAction", ID);
 	return dispatch => {
-		dispatch({ type: "SIGN_IN_CLICKED", payload: "User is Signed In" });
+		dispatch({
+			type: SIGN_IN,
+			payload: ID
+		});
 	};
 };
-export const SignOutClickedAction = msg => {
-	console.log("SignOutClickedAction", msg);
+export const SignOutAction = msg => {
+	console.log("SignOutAction", msg);
 	return dispatch => {
-		dispatch({ type: "SIGN_OUT_CLICKED", payload: "User Signed Out" });
+		dispatch({
+			type: SIGN_OUT
+		});
 	};
 };
