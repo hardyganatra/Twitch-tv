@@ -1,14 +1,18 @@
+import { SIGN_IN, SIGN_OUT } from "../Middleware/ActionTypes";
 const InitialState = {
-	SignInStatus: ""
+	SignInStatus: null,
+	UserID: null
 };
 const AuthReducer = (state = InitialState, action) => {
 	const NewState = { ...state };
 	switch (action.type) {
-		case "SIGN_IN_CLICKED":
-			NewState.SignInStatus = "User is Signed In";
+		case SIGN_IN:
+			NewState.SignInStatus = true;
+			NewState.UserID = action.payload;
 			break;
-		case "SIGN_OUT_CLICKED":
-			NewState.SignInStatus = "User Signed Out";
+		case SIGN_OUT:
+			NewState.SignInStatus = false;
+			NewState.UserID = null;
 			break;
 		default:
 			break;
