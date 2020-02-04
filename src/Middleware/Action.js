@@ -9,7 +9,7 @@ export const SignInAction = ID => {
 	};
 };
 export const SignOutAction = msg => {
-	console.log("SignOutAction", msg);
+	//console.log("SignOutAction", msg);
 	return dispatch => {
 		dispatch({
 			type: SIGN_OUT
