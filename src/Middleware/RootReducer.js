@@ -1,4 +1,5 @@
 import { combineReducers } from "redux";
+import { reducer as formReducer } from "redux-form";
 import AuthReducer from "../Middleware/AuthReducer";
-const RootReducer = combineReducers({ AuthReducer });
+const RootReducer = combineReducers({ AuthReducer, form: formReducer });
 export default RootReducer;
