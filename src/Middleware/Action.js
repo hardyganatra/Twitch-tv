@@ -10,7 +10,7 @@ import {
 import streams from "../Apis/Streams";
 
 export const SignInAction = ID => {
-	console.log("SignInAction", ID);
+	//console.log("SignInAction", ID);
 	return dispatch => {
 		dispatch({
 			type: SIGN_IN,
@@ -42,10 +42,10 @@ const CreateStreamSuccess = data => {
 };
 
 export const FetchStream = id => {
-	console.log("id", id);
+	//console.log("id", id);
 	return dispatch => {
 		streams.get(`/streams/${id}`).then(res => {
-			console.log("Fetch_Single", res.data);
+			//console.log("Fetch_Single", res.data);
 			dispatch(FetchStreamSuccess(res.data));
 		});
 	};
@@ -77,7 +77,7 @@ const FetchStreamsSuccess = data => {
 export const DeleteStream = id => {
 	return dispatch => {
 		streams.delete(`/streams/${id}`).then(res => {
-			console.log("Delete", res);
+			//console.log("Delete", res);
 			dispatch(DeleteSuccess(res.data));
 		});
 	};
@@ -91,10 +91,10 @@ const DeleteSuccess = data => {
 };
 
 export const EditStream = (id, formvalues) => {
-	console.log("EditStream", id, formvalues);
+	//console.log("EditStream", id, formvalues);
 	return dispatch => {
 		streams.put(`/streams/${id}`, formvalues).then(res => {
-			console.log("EditStream", res);
+			//console.log("EditStream", res);
 			dispatch(EditSuccess(res.data));
 		});
 	};
