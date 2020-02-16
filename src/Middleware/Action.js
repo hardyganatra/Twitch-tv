@@ -78,7 +78,7 @@ export const DeleteStream = id => {
 	return dispatch => {
 		streams.delete(`/streams/${id}`).then(res => {
 			//console.log("Delete", res);
-			dispatch(DeleteSuccess(res.data));
+			dispatch(DeleteSuccess(res.data.id));
 		});
 	};
 };

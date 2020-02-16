@@ -31,11 +31,11 @@ class StreamCreate extends React.Component {
 	};
 	onSubmit = submitProps => {
 		//console.log("submitProps", submitProps);
-		//this.props.CreateStream(submitProps);
+		this.props.CreateStream(submitProps);
 		//this.props.FetchStreams();
 		//this.props.FetchStream("1");
 		//this.props.EditStream("1", submitProps);
-		this.props.DeleteStream("1");
+		//this.props.DeleteStream("1");
 	};
 	render() {
 		return (
