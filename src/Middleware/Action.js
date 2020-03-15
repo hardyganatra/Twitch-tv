@@ -27,9 +27,9 @@ export const SignOutAction = msg => {
 };
 
 export const CreateStream = formvalues => {
-	return dispatch => {
-		streams.post("/streams", formvalues).then(res => {
-			//console.log(res);
+	return (dispatch, getstate) => {
+		const { UserID } = getstate().AuthReducer;
+		streams.post("/streams", { ...formvalues, UserID }).then(res => {
 			dispatch(CreateStreamSuccess(res.data));
 		});
 	};
