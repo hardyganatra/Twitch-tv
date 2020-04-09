@@ -5,104 +5,104 @@ import {
 	FETCH_STREAMS,
 	FETCH_STREAM,
 	DELETE_STREAM,
-	EDIT_STREAM
+	EDIT_STREAM,
 } from "./ActionTypes";
 import streams from "../Apis/Streams";
+import history from "../history";
 
-export const SignInAction = ID => {
+export const SignInAction = (ID) => {
 	//console.log("SignInAction", ID);
-	return dispatch => {
+	return (dispatch) => {
 		dispatch({
 			type: SIGN_IN,
-			payload: ID
+			payload: ID,
 		});
 	};
 };
-export const SignOutAction = msg => {
-	return dispatch => {
+export const SignOutAction = (msg) => {
+	return (dispatch) => {
 		dispatch({
-			type: SIGN_OUT
+			type: SIGN_OUT,
 		});
 	};
 };
 
-export const CreateStream = formvalues => {
+export const CreateStream = (formvalues) => {
 	return (dispatch, getstate) => {
 		const { UserID } = getstate().AuthReducer;
-		streams.post("/streams", { ...formvalues, UserID }).then(res => {
+		streams.post("/streams", { ...formvalues, UserID }).then((res) => {
 			dispatch(CreateStreamSuccess(res.data));
+			history.push("/");
 		});
 	};
 };
-const CreateStreamSuccess = data => {
+const CreateStreamSuccess = (data) => {
 	return {
 		type: CREATE_STREAM,
-		payload: data
+		payload: data,
 	};
 };
 
-export const FetchStream = id => {
-	//console.log("id", id);
-	return dispatch => {
-		streams.get(`/streams/${id}`).then(res => {
-			//console.log("Fetch_Single", res.data);
+export const FetchStream = (id) => {
+	return (dispatch) => {
+		streams.get(`/streams/${id}`).then((res) => {
 			dispatch(FetchStreamSuccess(res.data));
 		});
 	};
 };
 
-const FetchStreamSuccess = data => {
+const FetchStreamSuccess = (data) => {
 	return {
 		type: FETCH_STREAM,
-		payload: data
+		payload: data,
 	};
 };
 
 export const FetchStreams = () => {
-	return dispatch => {
-		streams.get("/streams").then(res => {
+	return (dispatch) => {
+		streams.get("/streams").then((res) => {
 			//console.log("fetchStreams", res.data);
 			dispatch(FetchStreamsSuccess(res.data));
 		});
 	};
 };
 
-const FetchStreamsSuccess = data => {
+const FetchStreamsSuccess = (data) => {
 	return {
 		type: FETCH_STREAMS,
-		payload: data
+		payload: data,
 	};
 };
 
-export const DeleteStream = id => {
-	return dispatch => {
-		streams.delete(`/streams/${id}`).then(res => {
+export const DeleteStream = (id) => {
+	return (dispatch) => {
+		streams.delete(`/streams/${id}`).then((res) => {
 			//console.log("Delete", res);
 			dispatch(DeleteSuccess(res.data.id));
 		});
 	};
 };
 
-const DeleteSuccess = data => {
+const DeleteSuccess = (data) => {
 	return {
 		type: DELETE_STREAM,
-		payload: data
+		payload: data,
 	};
 };
 
 export const EditStream = (id, formvalues) => {
 	//console.log("EditStream", id, formvalues);
-	return dispatch => {
-		streams.put(`/streams/${id}`, formvalues).then(res => {
+	return (dispatch) => {
+		streams.put(`/streams/${id}`, formvalues).then((res) => {
 			//console.log("EditStream", res);
 			dispatch(EditSuccess(res.data));
 		});
 	};
 };
 
-const EditSuccess = data => {
+const EditSuccess = (data) => {
 	return {
 		type: EDIT_STREAM,
-		payload: data
+		payload: data,
 	};
 };

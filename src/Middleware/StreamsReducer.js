@@ -4,10 +4,10 @@ import {
 	FETCH_STREAMS,
 	FETCH_STREAM,
 	DELETE_STREAM,
-	EDIT_STREAM
+	EDIT_STREAM,
 } from "../Middleware/ActionTypes";
 const initialState = {
-	streams: {}
+	streams: {},
 };
 const StreamsReducer = (state = initialState, action) => {
 	const NewState = { ...state };
@@ -16,25 +16,26 @@ const StreamsReducer = (state = initialState, action) => {
 			//debugger;
 			NewState.streams = {
 				...NewState.streams,
-				..._.mapKeys(action.payload, "id")
+				..._.mapKeys(action.payload, "id"),
 			};
 			break;
 		case FETCH_STREAM:
 			NewState.streams = {
 				...NewState.streams,
-				[action.payload.id]: action.payload
+				[action.payload.id]: action.payload,
 			};
+
 			break;
 		case CREATE_STREAM:
 			NewState.streams = {
 				...NewState.streams,
-				[action.payload.id]: action.payload
+				[action.payload.id]: action.payload,
 			};
 			break;
 		case EDIT_STREAM:
 			NewState.streams = {
 				...NewState.streams,
-				[action.payload.id]: action.payload
+				[action.payload.id]: action.payload,
 			};
 			break;
 		case DELETE_STREAM:
