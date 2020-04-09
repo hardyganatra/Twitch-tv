@@ -1,15 +1,32 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { FetchStream } from "../../Middleware/Action";
+import { FetchStream, EditStream } from "../../Middleware/Action";
+import StreamForm from "./StreamForm";
+import _ from "lodash";
 
 function StreamEdit(props) {
 	console.log("Result", props);
 	useEffect(() => {
 		props.fetchStream(props.match.params.id);
 	}, []);
+	const onSubmit = (submitProps) => {
+		console.log("SUbmittttttttttt");
+		props.EditStream(props.match.params.id, submitProps);
+	};
 	if (props.streams) {
-		return <div>{props.streams.Title}</div>;
-	} else return <div>Loading</div>;
+		return (
+			<div>
+				<h2>StreamEdit</h2>
+				<StreamForm
+					initialValues={_.pick(props.streams, [
+						"Title",
+						"Description",
+					])}
+					onSubmit={onSubmit}
+				></StreamForm>
+			</div>
+		);
+	} else return <div>Loading...........</div>;
 }
 
 const MapStateToProps = (state, ownProps) => {
@@ -20,6 +37,7 @@ const MapStateToProps = (state, ownProps) => {
 const MapDispatchToProps = (dispatch, ownProps) => {
 	return {
 		fetchStream: (id) => dispatch(FetchStream(id)),
+		EditStream: (id, formvalues) => dispatch(EditStream(id, formvalues)),
 	};
 };
 export default connect(MapStateToProps, MapDispatchToProps)(StreamEdit);

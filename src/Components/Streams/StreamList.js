@@ -50,7 +50,12 @@ function StreamList(props) {
 					>
 						Edit
 					</Link>
-					<Link className="ui button negative">Delete</Link>
+					<Link
+						to={"/streams/delete/"}
+						className="ui button negative"
+					>
+						Delete
+					</Link>
 				</div>
 			);
 		}
@@ -76,6 +81,7 @@ function StreamList(props) {
 }
 
 const MapStateToProps = (state) => {
+	console.log("List", Object.values(state.StreamsReducer.streams));
 	return {
 		streams: Object.values(state.StreamsReducer.streams),
 		Current_user_id: state.AuthReducer.UserID,

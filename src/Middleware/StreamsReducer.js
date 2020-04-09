@@ -37,6 +37,8 @@ const StreamsReducer = (state = initialState, action) => {
 				...NewState.streams,
 				[action.payload.id]: action.payload,
 			};
+			let abc = NewState.streams;
+
 			break;
 		case DELETE_STREAM:
 			NewState.streams = _.omit(NewState.streams, action.payload);

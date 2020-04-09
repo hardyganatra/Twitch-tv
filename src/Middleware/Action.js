@@ -93,9 +93,11 @@ const DeleteSuccess = (data) => {
 export const EditStream = (id, formvalues) => {
 	//console.log("EditStream", id, formvalues);
 	return (dispatch) => {
-		streams.put(`/streams/${id}`, formvalues).then((res) => {
+		streams.patch(`/streams/${id}`, formvalues).then((res) => {
 			//console.log("EditStream", res);
 			dispatch(EditSuccess(res.data));
+			history.push("/");
+			debugger;
 		});
 	};
 };
