@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { FetchStreams } from "../../Middleware/Action";
 import { Link } from "react-router-dom";
-import history from "../../history";
+import StreamDelete from "./StreamDelete";
 
 function StreamList(props) {
 	console.log(props, "props");
@@ -51,7 +51,7 @@ function StreamList(props) {
 						Edit
 					</Link>
 					<Link
-						to={"/streams/delete/"}
+						to={`/streams/delete/${userdata.id}`}
 						className="ui button negative"
 					>
 						Delete
