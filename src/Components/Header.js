@@ -10,7 +10,7 @@ export default class Header extends Component {
 		return (
 			<div className="ui secondary pointing menu">
 				<Link to="/" className="active item">
-					StreamyTV
+					StreamyTV Test
 				</Link>
 				<div className="right menu">
 					<div className="item">
