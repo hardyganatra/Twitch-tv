@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { FetchStreams } from "../../Middleware/Action";
 import { Link } from "react-router-dom";
+import StreamDelete from "./StreamDelete";
 import history from "../../history";
 
 function StreamList(props) {
@@ -26,7 +27,13 @@ function StreamList(props) {
 					>
 						{render_Delete_Edit(item)}
 						<i className="large middle aligned icon camera"></i>
-						<div className="content" style={{ color: "white" }}>
+						<div
+							onClick={() => {
+								history.push(`/streams/${item.id}`);
+							}}
+							className="content"
+							style={{ color: "white" }}
+						>
 							{item.Title}
 							<div
 								className="description"
@@ -51,7 +58,7 @@ function StreamList(props) {
 						Edit
 					</Link>
 					<Link
-						to={"/streams/delete/"}
+						to={`/streams/delete/${userdata.id}`}
 						className="ui button negative"
 					>
 						Delete

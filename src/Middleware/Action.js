@@ -77,8 +77,9 @@ const FetchStreamsSuccess = (data) => {
 export const DeleteStream = (id) => {
 	return (dispatch) => {
 		streams.delete(`/streams/${id}`).then((res) => {
-			//console.log("Delete", res);
-			dispatch(DeleteSuccess(res.data.id));
+			dispatch(DeleteSuccess(id));
+
+			history.push("/");
 		});
 	};
 };
@@ -97,7 +98,6 @@ export const EditStream = (id, formvalues) => {
 			//console.log("EditStream", res);
 			dispatch(EditSuccess(res.data));
 			history.push("/");
-			debugger;
 		});
 	};
 };
