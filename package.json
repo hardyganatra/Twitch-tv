@@ -27,8 +27,7 @@
 		"npm": "6.9.0"
 	},
 	"scripts": {
-		"start": "serve -s build",
-		"dev": "react-scripts start"
+		"start": "react-scripts start"
 	},
 	"eslintConfig": {
 		"extends": "react-app"
