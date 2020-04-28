@@ -60,9 +60,10 @@ const FetchStreamSuccess = (data) => {
 
 export const FetchStreams = () => {
 	return (dispatch) => {
-		streams.get("/streams").then((res) => {
+		streams.get("/").then((res) => {
 			//console.log("fetchStreams", res.data);
-			dispatch(FetchStreamsSuccess(res.data));
+			debugger;
+			dispatch(FetchStreamsSuccess(res.data.streams));
 		});
 	};
 };
