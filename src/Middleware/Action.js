@@ -62,7 +62,7 @@ export const FetchStreams = () => {
 	return (dispatch) => {
 		streams.get("/").then((res) => {
 			//console.log("fetchStreams", res.data);
-			debugger;
+			//debugger;
 			dispatch(FetchStreamsSuccess(res.data.streams));
 		});
 	};

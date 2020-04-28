@@ -12,12 +12,13 @@ class GoogleAuth extends React.Component {
 				.init({
 					clientId:
 						"1061346940851-of9s9hvjethpf4192lnmai0bltoos3so.apps.googleusercontent.com",
-					scope: "email"
+					scope: "email",
 				})
 				.then(() => {
 					this.auth2 = window.gapi.auth2.getAuthInstance();
 					this.onAuthChange();
 					this.auth2.isSignedIn.listen(this.onAuthChange);
+					console.log("Auth-change", this.auth2);
 				});
 		});
 	}
@@ -87,17 +88,17 @@ class GoogleAuth extends React.Component {
 		return <div>{this.renderButton()}</div>;
 	}
 }
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
 	//console.log("State =>", state.AuthReducer);
 	return {
-		SignInStatus: state.AuthReducer.SignInStatus
+		SignInStatus: state.AuthReducer.SignInStatus,
 	};
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
 	return {
-		UserSigned_In: ID => dispatch(SignInAction(ID)),
-		UserSigned_Out: msg => dispatch(SignOutAction())
+		UserSigned_In: (ID) => dispatch(SignInAction(ID)),
+		UserSigned_Out: (msg) => dispatch(SignOutAction()),
 	};
 };
 
