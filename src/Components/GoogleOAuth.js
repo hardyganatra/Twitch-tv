@@ -70,7 +70,7 @@ class GoogleAuth extends React.Component {
 				// 	<i className="google icon"></i>
 				// 	Sign Out
 				// </Button>
-				null
+				<Button>abc</Button>
 			);
 		} else if (!this.props.SignInStatus) {
 			//if signed out show sign in button and handle signin event
