@@ -48,35 +48,35 @@ function StreamList(props) {
 		} else return <div>Loading....</div>;
 	};
 	const render_Delete_Edit = (userdata) => {
-		if (userdata.UserID === props.Current_user_id) {
-			return (
-				<div className="right floated content">
-					<Link
-						to={`/streams/edit/${userdata.id}`}
-						className="ui button primary"
-					>
-						Edit
-					</Link>
-					<Link
-						to={`/streams/delete/${userdata.id}`}
-						className="ui button negative"
-					>
-						Delete
-					</Link>
-				</div>
-			);
-		}
+		// if (userdata.UserID === props.Current_user_id) {
+		return (
+			<div className="right floated content">
+				<Link
+					to={`/streams/edit/${userdata.id}`}
+					className="ui button primary"
+				>
+					Edit
+				</Link>
+				<Link
+					to={`/streams/delete/${userdata.id}`}
+					className="ui button negative"
+				>
+					Delete
+				</Link>
+			</div>
+		);
+		// }
 	};
 	const render_create_button = () => {
-		if (props.SignInStatus) {
-			return (
-				<div style={{ textAlign: "center" }}>
-					<Link to="/streams/new" className="ui button primary">
-						Create Stream
-					</Link>
-				</div>
-			);
-		}
+		// if (props.SignInStatus) {
+		return (
+			<div style={{ textAlign: "center" }}>
+				<Link to="/streams/new" className="ui button primary">
+					Create Stream
+				</Link>
+			</div>
+		);
+		// }
 	};
 	return (
 		<div style={{ backgroundColor: "#ffc30094" }}>
