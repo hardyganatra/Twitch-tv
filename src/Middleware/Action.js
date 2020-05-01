@@ -82,12 +82,13 @@ export const DeleteStream = (id) => {
 		streams.delete(`/streams/${id}`).then((res) => {
 			dispatch(DeleteSuccess(id));
 
-			history.push("/");
+			//debugger;
 		});
 	};
 };
 
 const DeleteSuccess = (data) => {
+	history.push("/");
 	return {
 		type: DELETE_STREAM,
 		payload: data,

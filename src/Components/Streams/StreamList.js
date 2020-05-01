@@ -13,6 +13,7 @@ function StreamList(props) {
 	}, []);
 	const renderlist = () => {
 		if (props.streams.length > 0) {
+			//debugger;
 			return props.streams.map((item) => {
 				return (
 					<div
@@ -52,13 +53,13 @@ function StreamList(props) {
 		return (
 			<div className="right floated content">
 				<Link
-					to={`/streams/edit/${userdata.id}`}
+					to={`/streams/edit/${userdata._id}`}
 					className="ui button primary"
 				>
 					Edit
 				</Link>
 				<Link
-					to={`/streams/delete/${userdata.id}`}
+					to={`/streams/delete/${userdata._id}`}
 					className="ui button negative"
 				>
 					Delete
@@ -88,7 +89,8 @@ function StreamList(props) {
 }
 
 const MapStateToProps = (state) => {
-	console.log("List", Object.values(state.StreamsReducer.streams));
+	console.log("List12345", Object.values(state.StreamsReducer.streams));
+
 	return {
 		streams: Object.values(state.StreamsReducer.streams),
 		Current_user_id: state.AuthReducer.UserID,

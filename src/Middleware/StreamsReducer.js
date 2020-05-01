@@ -15,16 +15,15 @@ const StreamsReducer = (state = initialState, action) => {
 		case FETCH_STREAMS:
 			//debugger;
 			NewState.streams = {
-				...NewState.streams,
 				..._.mapKeys(action.payload, "_id"),
 			};
 			//debugger;
 			break;
 		case FETCH_STREAM:
-			NewState.streams = {
-				...NewState.streams,
-				[action.payload.id]: action.payload,
-			};
+			// NewState.streams = {
+			// 	...NewState.streams,
+			// 	[action.payload.id]: action.payload,
+			// };
 
 			break;
 		case CREATE_STREAM:
@@ -35,15 +34,15 @@ const StreamsReducer = (state = initialState, action) => {
 			//debugger;
 			break;
 		case EDIT_STREAM:
-			NewState.streams = {
-				...NewState.streams,
-				[action.payload.id]: action.payload,
-			};
-			let abc = NewState.streams;
+			// NewState.streams = {
+			// 	...NewState.streams,
+			// 	[action.payload.id]: action.payload,
+			// };
+			// let abc = NewState.streams;
 
 			break;
 		case DELETE_STREAM:
-			NewState.streams = _.omit(NewState.streams, action.payload);
+			// NewState.streams = _.omit(NewState.streams, action.payload);
 
 			break;
 		default:
