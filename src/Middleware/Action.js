@@ -62,7 +62,7 @@ const FetchStreamSuccess = (data) => {
 
 export const FetchStreams = () => {
 	return (dispatch) => {
-		streams.get("/").then((res) => {
+		streams.get("/streams").then((res) => {
 			//console.log("fetchStreams", res.data);
 			//debugger;
 			dispatch(FetchStreamsSuccess(res.data.streams));

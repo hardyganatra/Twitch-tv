@@ -16,8 +16,9 @@ const StreamsReducer = (state = initialState, action) => {
 			//debugger;
 			NewState.streams = {
 				...NewState.streams,
-				..._.mapKeys(action.payload, "id"),
+				..._.mapKeys(action.payload, "_id"),
 			};
+			debugger;
 			break;
 		case FETCH_STREAM:
 			NewState.streams = {
