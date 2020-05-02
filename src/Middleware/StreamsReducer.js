@@ -20,10 +20,10 @@ const StreamsReducer = (state = initialState, action) => {
 			//debugger;
 			break;
 		case FETCH_STREAM:
-			// NewState.streams = {
-			// 	...NewState.streams,
-			// 	[action.payload.id]: action.payload,
-			// };
+			NewState.streams = {
+				...NewState.streams,
+				[action.payload._id]: action.payload,
+			};
 
 			break;
 		case CREATE_STREAM:

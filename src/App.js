@@ -9,12 +9,21 @@ import Header from "./Components/Header";
 import history from "../src/history";
 
 function App() {
+	const login = () => {
+		return <div>Login Page</div>;
+	};
+
 	return (
 		<div>
 			<Router history={history}>
 				<Header></Header>
 				<Switch>
-					<Route path="/" exact component={StreamList}></Route>
+					<Route path="/" exact component={login}></Route>
+					<Route
+						path="/streamlist"
+						exact
+						component={StreamList}
+					></Route>
 					<Route path="/streams/new" component={StreamCreate}></Route>
 					<Route
 						path="/streams/edit/:id"

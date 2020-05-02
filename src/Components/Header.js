@@ -9,7 +9,7 @@ export default class Header extends Component {
 	render() {
 		return (
 			<div className="ui secondary pointing menu">
-				<Link to="/" className="active item">
+				<Link to="/streamlist" className="active item">
 					StreamyTv App
 				</Link>
 				<div className="right menu">

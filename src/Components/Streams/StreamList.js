@@ -30,7 +30,7 @@ function StreamList(props) {
 						<i className="large middle aligned icon camera"></i>
 						<div
 							onClick={() => {
-								history.push(`/streams/${item.id}`);
+								history.push(`/streams/${item._id}`);
 							}}
 							className="content"
 							style={{ color: "white" }}
@@ -80,8 +80,8 @@ function StreamList(props) {
 		// }
 	};
 	return (
-		<div style={{ backgroundColor: "#ffc30094" }}>
-			<h2 style={{ color: "blue" }}>Streams</h2>
+		<div style={{ backgroundColor: "indianred" }}>
+			<h2 style={{ color: "antiquewhite" }}>Streams</h2>
 			<div className="ui celled list">{renderlist()}</div>
 			{render_create_button()}
 		</div>

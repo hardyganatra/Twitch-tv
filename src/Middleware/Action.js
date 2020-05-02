@@ -34,7 +34,7 @@ export const CreateStream = (formvalues) => {
 		streams.post("/streams", { ...formvalues, UserID }).then((res) => {
 			//console.log("Che", res);
 			dispatch(CreateStreamSuccess(res.data));
-			history.push("/");
+			history.push("/streamlist");
 		});
 	};
 };
@@ -54,6 +54,7 @@ export const FetchStream = (id) => {
 };
 
 const FetchStreamSuccess = (data) => {
+	debugger;
 	return {
 		type: FETCH_STREAM,
 		payload: data,
@@ -88,7 +89,7 @@ export const DeleteStream = (id) => {
 };
 
 const DeleteSuccess = (data) => {
-	history.push("/");
+	history.push("/streamlist");
 	return {
 		type: DELETE_STREAM,
 		payload: data,
@@ -101,7 +102,7 @@ export const EditStream = (id, formvalues) => {
 		streams.patch(`/streams/${id}`, formvalues).then((res) => {
 			//console.log("EditStream", res);
 			dispatch(EditSuccess(res.data));
-			history.push("/");
+			history.push("/streamlist");
 		});
 	};
 };
