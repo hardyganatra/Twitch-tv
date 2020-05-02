@@ -6,10 +6,10 @@ const StreamShow = (props) => {
 	console.log("Show", props);
 	useState(() => {
 		props.fetchStream(props.match.params.id);
-		debugger;
+		//;
 	}, []);
 	if (props.streams) {
-		debugger;
+		//;
 		return (
 			<>
 				<h2>{props.streams.Title}</h2>
@@ -20,7 +20,7 @@ const StreamShow = (props) => {
 };
 
 const MapStateToProps = (state, ownProps) => {
-	debugger;
+	//;
 	return {
 		streams: state.StreamsReducer.streams[ownProps.match.params.id],
 	};

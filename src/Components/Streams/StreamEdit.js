@@ -23,6 +23,9 @@ function StreamEdit(props) {
 						"Description",
 					])}
 					onSubmit={onSubmit}
+					button_1={"Submit"}
+					label_1={"Title"}
+					label_2={"Description"}
 				></StreamForm>
 			</div>
 		);

@@ -13,7 +13,7 @@ function StreamList(props) {
 	}, []);
 	const renderlist = () => {
 		if (props.streams.length > 0) {
-			//debugger;
+			//;
 			return props.streams.map((item) => {
 				return (
 					<div

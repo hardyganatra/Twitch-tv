@@ -5,20 +5,17 @@ import StreamDelete from "./Components/Streams/StreamDelete";
 import StreamEdit from "./Components/Streams/StreamEdit";
 import StreamList from "./Components/Streams/StreamList";
 import StreamShow from "./Components/Streams/StreamShow";
+import loginPage from "./Components/loginPage";
 import Header from "./Components/Header";
 import history from "../src/history";
 
 function App() {
-	const login = () => {
-		return <div>Login Page</div>;
-	};
-
 	return (
 		<div>
 			<Router history={history}>
 				<Header></Header>
 				<Switch>
-					<Route path="/" exact component={login}></Route>
+					<Route path="/" exact component={loginPage}></Route>
 					<Route
 						path="/streamlist"
 						exact

@@ -11,18 +11,18 @@ import {
 import StreamForm from "./StreamForm";
 class StreamCreate extends React.Component {
 	onSubmit = (submitProps) => {
-		//console.log("submitProps", submitProps);
 		this.props.CreateStream(submitProps);
-		//this.props.FetchStreams();
-		//this.props.FetchStream("1");
-		//this.props.EditStream("1", submitProps);
-		//this.props.DeleteStream("1");
 	};
 	render() {
 		return (
 			<div>
 				<h2>StreamCreate</h2>
-				<StreamForm onSubmit={this.onSubmit}></StreamForm>
+				<StreamForm
+					onSubmit={this.onSubmit}
+					button_1={"Submit"}
+					label_1={"Title"}
+					label_2={"Description"}
+				></StreamForm>
 			</div>
 		);
 	}
@@ -31,10 +31,6 @@ class StreamCreate extends React.Component {
 const MapDispatchToProps = (dispatch) => {
 	return {
 		CreateStream: (formvalues) => dispatch(CreateStream(formvalues)),
-		// FetchStream: (id) => dispatch(FetchStream(id)),
-		// FetchStreams: (id) => dispatch(FetchStreams()),
-		// EditStream: (id, formvalues) => dispatch(EditStream(id, formvalues)),
-		// DeleteStream: (id) => dispatch(DeleteStream(id)),
 	};
 };
 

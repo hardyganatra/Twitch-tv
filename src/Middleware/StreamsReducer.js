@@ -13,11 +13,11 @@ const StreamsReducer = (state = initialState, action) => {
 	const NewState = { ...state };
 	switch (action.type) {
 		case FETCH_STREAMS:
-			//debugger;
+			//;
 			NewState.streams = {
 				..._.mapKeys(action.payload, "_id"),
 			};
-			//debugger;
+			//;
 			break;
 		case FETCH_STREAM:
 			NewState.streams = {
@@ -31,7 +31,7 @@ const StreamsReducer = (state = initialState, action) => {
 			// 	...NewState.streams,
 			// 	[action.payload.id]: action.payload,
 			// };
-			//debugger;
+			//;
 			break;
 		case EDIT_STREAM:
 			// NewState.streams = {

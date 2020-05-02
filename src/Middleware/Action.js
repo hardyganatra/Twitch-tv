@@ -29,7 +29,7 @@ export const SignOutAction = (msg) => {
 
 export const CreateStream = (formvalues) => {
 	return (dispatch, getstate) => {
-		//debugger;
+		//;
 		const { UserID } = getstate().AuthReducer;
 		streams.post("/streams", { ...formvalues, UserID }).then((res) => {
 			//console.log("Che", res);
@@ -54,7 +54,7 @@ export const FetchStream = (id) => {
 };
 
 const FetchStreamSuccess = (data) => {
-	debugger;
+	//;
 	return {
 		type: FETCH_STREAM,
 		payload: data,
@@ -65,7 +65,7 @@ export const FetchStreams = () => {
 	return (dispatch) => {
 		streams.get("/streams").then((res) => {
 			//console.log("fetchStreams", res.data);
-			//debugger;
+			//;
 			dispatch(FetchStreamsSuccess(res.data.streams));
 		});
 	};
@@ -83,7 +83,7 @@ export const DeleteStream = (id) => {
 		streams.delete(`/streams/${id}`).then((res) => {
 			dispatch(DeleteSuccess(id));
 
-			//debugger;
+			//;
 		});
 	};
 };

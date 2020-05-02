@@ -5,10 +5,10 @@ import { DeleteStream, FetchStream } from "../../Middleware/Action";
 import { connect } from "react-redux";
 
 const StreamDelete = (props) => {
-	//debugger;
+	//;
 	useEffect(() => {
 		props.fetchStream(props.match.params.id);
-		//debugger;
+		//;
 	}, []);
 	const actions = (
 		<React.Fragment>
