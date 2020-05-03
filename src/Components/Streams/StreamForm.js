@@ -42,7 +42,7 @@ class StreamForm extends React.Component {
 				<button className="ui button primary">
 					{this.props.button_1}
 				</button>
-				{this.props.button_1 ? (
+				{this.props.button_2 ? (
 					<button className="ui button primary">
 						{this.props.button_2}
 					</button>
