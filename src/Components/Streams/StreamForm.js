@@ -30,12 +30,12 @@ class StreamForm extends React.Component {
 				className="ui form error"
 			>
 				<Field
-					name="Title"
+					name={this.props.label_1}
 					component={this.renderInput}
 					label={this.props.label_1}
 				/>
 				<Field
-					name="Description"
+					name={this.props.label_2}
 					component={this.renderInput}
 					label={this.props.label_2}
 				/>

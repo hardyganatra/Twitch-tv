@@ -18,7 +18,7 @@ function StreamList(props) {
 				return (
 					<div
 						className="item"
-						key={item.id}
+						key={item._id}
 						style={{
 							border: "1px solid red",
 							backgroundColor: "#b77f89",

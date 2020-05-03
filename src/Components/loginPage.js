@@ -14,7 +14,7 @@ export default function loginPage() {
 				onSubmit={onSubmit}
 				button_1={"Signup"}
 				button_2={"Login"}
-				label_1={"Username"}
+				label_1={"email"}
 				label_2={"password"}
 			></StreamForm>
 		</div>
