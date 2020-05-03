@@ -6,6 +6,7 @@ import {
 	FETCH_STREAM,
 	DELETE_STREAM,
 	EDIT_STREAM,
+	SIGN_UP,
 } from "./ActionTypes";
 import streams from "../Apis/Streams";
 import history from "../history";
@@ -110,6 +111,23 @@ export const EditStream = (id, formvalues) => {
 const EditSuccess = (data) => {
 	return {
 		type: EDIT_STREAM,
+		payload: data,
+	};
+};
+
+export const signUp = (formvalues) => {
+	return (dispatch) => {
+		streams.post("/signup", formvalues).then((res) => {
+			debugger;
+			dispatch(signUpSuccess(res.data));
+			history.push("/streamlist");
+		});
+	};
+};
+
+const signUpSuccess = (data) => {
+	return {
+		type: SIGN_UP,
 		payload: data,
 	};
 };

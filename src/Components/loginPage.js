@@ -1,11 +1,12 @@
 import React from "react";
 import StreamForm from "../Components/Streams/StreamForm";
-import history from "../history";
+import { signUp } from "../Middleware/Action";
+import { connect } from "react-redux";
 
-export default function loginPage() {
+const loginPage = (props) => {
 	const onSubmit = (submitProps) => {
 		// this.props.CreateStream(submitProps);
-		history.push("/streamlist");
+		props.Signup(submitProps);
 		console.log("LoginDetails", submitProps);
 	};
 	return (
@@ -19,4 +20,12 @@ export default function loginPage() {
 			></StreamForm>
 		</div>
 	);
-}
+};
+
+const MapDispatchToProps = (dispatch) => {
+	return {
+		Signup: (formvalues) => dispatch(signUp(formvalues)),
+	};
+};
+
+export default connect(null, MapDispatchToProps)(loginPage);
