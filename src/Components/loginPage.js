@@ -1,9 +1,11 @@
 import React from "react";
 import StreamForm from "../Components/Streams/StreamForm";
+import history from "../history";
 
 export default function loginPage() {
 	const onSubmit = (submitProps) => {
 		// this.props.CreateStream(submitProps);
+		history.push("/streamlist");
 		console.log("LoginDetails", submitProps);
 	};
 	return (
