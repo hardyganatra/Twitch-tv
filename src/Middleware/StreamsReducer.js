@@ -5,9 +5,14 @@ import {
 	FETCH_STREAM,
 	DELETE_STREAM,
 	EDIT_STREAM,
+	SIGN_IN_SUCCESS,
+	SIGN_IN_ERROR,
+	SIGN_UP_SUCCESS,
+	SIGN_UP_ERROR,
 } from "../Middleware/ActionTypes";
 const initialState = {
 	streams: {},
+	loginMessage: "",
 };
 const StreamsReducer = (state = initialState, action) => {
 	const NewState = { ...state };
@@ -42,8 +47,25 @@ const StreamsReducer = (state = initialState, action) => {
 
 			break;
 		case DELETE_STREAM:
-			// NewState.streams = _.omit(NewState.streams, action.payload);
-
+			break;
+		// NewState.streams = _.omit(NewState.streams, action.payload);
+		case SIGN_IN_SUCCESS:
+			NewState.loginMessage = "Sign up Successful";
+			debugger;
+			break;
+		//SIGN_UP_ERROR
+		case SIGN_IN_ERROR:
+			NewState.loginMessage =
+				"unAuthorised , incorrect username or Password ";
+			debugger;
+			break;
+		case SIGN_UP_SUCCESS:
+			NewState.loginMessage = "Sign up SUccessfull";
+			debugger;
+			break;
+		case SIGN_UP_ERROR:
+			NewState.loginMessage = "User name or Password Allready exist";
+			debugger;
 			break;
 		default:
 			break;

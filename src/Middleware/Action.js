@@ -6,7 +6,10 @@ import {
 	FETCH_STREAM,
 	DELETE_STREAM,
 	EDIT_STREAM,
-	SIGN_UP,
+	SIGN_UP_SUCCESS,
+	SIGN_UP_ERROR,
+	SIGN_IN_SUCCESS,
+	SIGN_IN_ERROR,
 } from "./ActionTypes";
 import streams from "../Apis/Streams";
 import history from "../history";
@@ -117,17 +120,58 @@ const EditSuccess = (data) => {
 
 export const signUp = (formvalues) => {
 	return (dispatch) => {
-		streams.post("/signup", formvalues).then((res) => {
-			debugger;
-			dispatch(signUpSuccess(res.data));
-			history.push("/streamlist");
-		});
+		streams.post("/signup", formvalues).then(
+			(res) => {
+				dispatch(signUpSuccess(res.data));
+				history.push("/streamlist");
+			},
+			(error) => {
+				dispatch(signUpError());
+				console.log("ERRRORRRRRRRRRR", error);
+			}
+		);
 	};
 };
 
 const signUpSuccess = (data) => {
+	debugger;
 	return {
-		type: SIGN_UP,
+		type: SIGN_UP_SUCCESS,
 		payload: data,
+	};
+};
+
+const signUpError = () => {
+	debugger;
+	return {
+		type: SIGN_UP_ERROR,
+	};
+};
+
+export const signIn = (formvalues) => {
+	return (dispatch) => {
+		streams.post("/signin", formvalues).then(
+			(res) => {
+				dispatch(signInSuccess(res.data));
+				history.push("/streamlist");
+			},
+			(error) => {
+				dispatch(signInError());
+				console.log("ERRRORRRRRRRRRR", error);
+			}
+		);
+	};
+};
+
+const signInSuccess = (data) => {
+	return {
+		type: SIGN_IN_SUCCESS,
+		payload: data,
+	};
+};
+
+const signInError = () => {
+	return {
+		type: SIGN_IN_ERROR,
 	};
 };

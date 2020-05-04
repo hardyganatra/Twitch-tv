@@ -6,3 +6,7 @@ export const FETCH_STREAM = "FETCH_STREAM";
 export const DELETE_STREAM = "DELETE_STREAM";
 export const EDIT_STREAM = "EDIT_STREAM";
 export const SIGN_UP = "SIGN_UP";
+export const SIGN_IN_SUCCESS = "SIGN_IN_SUCCESS";
+export const SIGN_IN_ERROR = "SIGN_IN_ERROR";
+export const SIGN_UP_SUCCESS = "SIGN_UP_SUCCESS";
+export const SIGN_UP_ERROR = "SIGN_UP_ERROR";

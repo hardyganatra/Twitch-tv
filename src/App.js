@@ -5,6 +5,8 @@ import StreamDelete from "./Components/Streams/StreamDelete";
 import StreamEdit from "./Components/Streams/StreamEdit";
 import StreamList from "./Components/Streams/StreamList";
 import StreamShow from "./Components/Streams/StreamShow";
+import loginPage_Signup from "./Components/Signup";
+import loginPage_Signin from "./Components/Signin";
 import loginPage from "./Components/loginPage";
 import Header from "./Components/Header";
 import history from "../src/history";
@@ -16,6 +18,16 @@ function App() {
 				<Header></Header>
 				<Switch>
 					<Route path="/" exact component={loginPage}></Route>
+					<Route
+						path="/signup"
+						exact
+						component={loginPage_Signup}
+					></Route>
+					<Route
+						path="/signin"
+						exact
+						component={loginPage_Signin}
+					></Route>
 					<Route
 						path="/streamlist"
 						exact
